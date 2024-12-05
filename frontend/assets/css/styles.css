@@ -485,6 +485,26 @@ footer {
 	}
 }
 
+#music_selector {
+	background-color: rgba(0, 0, 0, 0.7);
+	/* Warna background gelap transparan */
+	color: #ffffff;
+	/* Warna teks putih */
+	border: 1px solid #ffffff;
+	/* Warna border putih */
+	border-radius: 5px;
+	/* Membuat sudut sedikit melengkung */
+	font-size: 14px;
+	/* Ukuran font */
+}
+
+#music_selector option {
+	background-color: #333333;
+	/* Warna background untuk opsi dropdown */
+	color: #ffffff;
+	/* Warna teks untuk opsi dropdown */
+}
+
 /* mengubah warna container dan tulisan (lihat selengkapnya)  artikel di halaman rekomendasi fashion*/
 .bg-gray-200 {
 	background-color: #e0e0e0;
@@ -576,4 +596,9 @@ footer {
 	/* Pastikan latar belakang penuh putih */
 	box-shadow: 0 0 0 1px #ddd;
 	/* Tambahkan border dengan efek bayangan */
+}
+
+/* untuk merubah warna tulisan founder & develop pada card tim padz*/
+.text-white {
+	color: white;
 }

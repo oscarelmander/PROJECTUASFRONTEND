@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="PADZApp" ng-controller="commentsController">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artikel 7</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="../assets/css/styles.css" rel="stylesheet" />
+    <link href="../assets/css/style2.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body  ng-class="{'light-mode': isLightMode, 'dark-mode': !isLightMode}">
+    <div class="modal fade" id="loginModal" ng-class="{'show d-block': isModalVisible, 'fade': isModalVisible}">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">
+                        Login
+                    </h5>
+                    <button type="button" class="btn-close" ng-click="isModalVisible = false"></button>
+                </div>
+                <div class="modal-body">
+                    <form ng-submit="login()">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" ng-model="user.username" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" ng-model="user.password"
+                                required />
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            Login
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-include="'/pages/navbar.html'"></div>
+
+    <div class="main-container">
+        <div class="article-container text-white">
+            <h1 class="heading-title">
+                Pakaian yang sangat cocok di pakai ketika di atas gunung jika ingin tetap bergaya fashion style
+            </h1>
+            <p class="subheading">
+                Fashion Style Oscar
+            </p>
+            <p class="date">
+                13 November 2024
+            </p>
+
+            <!-- Gambar Artikel -->
+            <img src="../image/outfit7.jpg" alt="Fashion Style Image" class="article-image" />
+
+            <!-- Konten Paragraf -->
+            <div class="content">
+                <p id="article_text">
+                    Orang di sebelah kiri mengenakan gaya kasual outdoor dengan t-shirt hitam bergambar dan celana
+                    panjang cargo hitam.
+                    Penampilannya dilengkapi dengan bandana atau gaiter hitam di leher, yang sering digunakan untuk
+                    kenyamanan atau
+                    perlindungan di lingkungan gunung. Gaya ini cocok untuk aktivitas mendaki.
+                </p>
+            </div>
+
+            <!-- Link Produk -->
+            <div class="product-links">
+                <p>
+                    <strong id="article_text">Produk yang
+                        digunakan:</strong>
+                </p>
+                <ul>
+                    <li>
+                        <a id="article_text"
+                            href="https://www.asos.com/pullbear/pullbear-x-aaliyah-printed-t-shirt-in-black/prd/203531966"
+                            target="_blank">Baju - Aaliyah Pull & Bear</a>
+                    </li>
+                    <li>
+                        <a id="article_text"
+                            href="https://shopee.co.id/NRDN-Clothing-Celana-Panjang-WIDE-CARGO-PANTS-i.210499562.18875689872?sp_atk=18f85c1e-dcfa-41e7-a8ec-9cc8bd8c9dc9&xptdk=18f85c1e-dcfa-41e7-a8ec-9cc8bd8c9dc9"
+                            target="_blank">Celana - Cargo Hitam</a>
+                    </li>
+                    <li>
+                        <a id="article_text"
+                            href="https://shopee.co.id/TIMUGA-Sepatu-Pria-Kerja-Casual-Sneakers-Sport-Outdoor-Gunung-Sepatu-Jogging-Cowok-Outdoor-MC464-i.859352603.19786847878?sp_atk=f5f8c0a7-e22b-47dd-9655-b8f484ae4eb2&xptdk=f5f8c0a7-e22b-47dd-9655-b8f484ae4eb2"
+                            target="_blank">Sepatu - Sepatu Naik gunung</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Kolom Komentar -->
+            <div class="comments-section mt-5">
+                <h3 class="text-white">Kolom Komentar</h3>
+                form ng-submit="addComment()">
+					<div class="add-comment mb-4">
+						<input type="hidden" ng-model="newComment.nomorArtikel" ng-init="newComment.nomorArtikel='artikel6'">
+						<textarea class="form-control" ng-model="newComment.text" rows="3"
+							placeholder="Tulis komentar Anda di sini..." required></textarea>
+						<button class="btn btn-primary mt-2 w-100" type="submit"">Kirim Komentar</button>
+					</div>
+				</form>
+                <div class="comments-list">
+                    <div class="card mb-3" ng-repeat="comment in comments track by $index">
+                        <div class="card-body">
+                            <h5 class="card-title">User {{ $index + 1 }}</h5>
+                            <p class="card-text">{{ comment.isiKomentar }}</p>
+                            <p class="text-muted small">Ditulis pada {{ comment.timestamp | date:'medium' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div ng-include="'/pages/sidebar.html'" class="ng-scope" ng-controller="sidebarController"></div>
+    </div>
+
+    <div ng-include="'/pages/footer.html'"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- font icon ig,wa,gmail -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <!-- AngularJS Controller -->
+    <!-- <script src="../assets/scripts/script.js"></script> -->
+    <script>
+        function checkLoginStatus() {
+            const isLoggedIn =
+                localStorage.getItem(
+                    'isLoggedIn'
+                ) === 'true';
+
+            const loginButton =
+                document.getElementById(
+                    'toogle_login'
+                );
+            if (isLoggedIn) {
+                loginButton.classList.remove(
+                    'fa-user'
+                );
+                loginButton.classList.add(
+                    'fa-sign-out-alt'
+                );
+                loginButton.setAttribute(
+                    'title',
+                    'Logout'
+                );
+            } else {
+                loginButton.classList.remove(
+                    'fa-sign-out-alt'
+                );
+                loginButton.classList.add(
+                    'fa-user'
+                );
+                loginButton.setAttribute(
+                    'title',
+                    'Login'
+                );
+            }
+        }
+
+        window.onload = checkLoginStatus;
+    </script>
+</body>
+<script src="/assets/scripts/commentsController.js"></script>
+</html>

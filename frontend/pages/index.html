@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp"> <!--Direktif AngularJS yang menginisialisasi aplikasi AngularJS dengan nama myApp-->
+<html lang="en" ng-app="PADZApp"> <!--Direktif AngularJS yang menginisialisasi aplikasi AngularJS dengan nama myApp-->
 
 <head>
 	<meta charset="UTF-8" />
@@ -103,9 +103,9 @@
 	</div>
 
 	<!-- Navbar (Memanggil navbar.html di dalam file terpisah)-->
-	<div ng-include="'navbar.html'"></div>
+	<div ng-include="'/pages/navbar.html'"></div>
 
-	<!-- Music Player  di Body-->
+	<!-- Music Player di Body -->
 	<div class="music-player position-fixed bottom-0 end-0 m-3 bg-transparent text-light p-3 rounded shadow d-flex align-items-center"
 		id="music_player">
 		<!-- Album Cover -->
@@ -114,8 +114,18 @@
 
 		<!-- Music Info -->
 		<div class="d-flex flex-column flex-grow-1 music-info">
-			<p class="mb-0" style="font-weight: bold; font-size: 16px;">Padz Song</p>
-			<small class="text-white">Oscar ft Dziko</small>
+			<p class="mb-0" style="font-weight: bold; font-size: 16px;" id="music_title">Padz Song</p>
+			<small class="text-white" id="music_artist">Oscar ft Dziko</small>
+
+			<!-- Dropdown Music Selector -->
+			<select class="form-select mt-2 text-light bg-transparent border-light" id="music_selector">
+				<option value="../violent.mp3" data-title="violent crimes x jersey club" data-artist="prodbycpkshawn"
+					data-cover="../image/21-3.jpg">Violent</option>
+				<option value="../caroline.mp3" data-title="Caroline" data-artist="Amine"
+					data-cover="../image/padz2.jpg">Caroline</option>
+				<option value="../music.mp3" data-title="Music Relax" data-artist="Oscar"
+					data-cover="../image/padz1.jpeg">Music Relax</option>
+			</select>
 
 			<!-- Progress Bar Music -->
 			<div class="progress mt-2" style="height: 4px;">
@@ -141,6 +151,7 @@
 			Browser Anda tidak mendukung elemen audio.
 		</audio>
 	</div>
+
 
 	<!-- ini Navbar lama kami, alasan tidak mengahapusnya karena untuk keperluan dokumentasi kami-->
 	<!-- <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
@@ -259,7 +270,7 @@
 					<!-- Fashion 1 -->
 					<div class="col">
 						<div class="card h-100">
-							<a href="artikel1.html">
+							<a href="/artikel1">
 								<img src="../image/outfit1.jpg" class="card-img-top" alt="Foto Dziko" />
 							</a>
 							<div class="card-body">
@@ -282,7 +293,7 @@
 					<!-- Fashion 2 -->
 					<div class="col">
 						<div class="card h-100">
-							<a href="artikel2.html">
+							<a href="/artikel2">
 								<img src="../image/outfit2.jpg" class="card-img-top" alt="Foto Wilbert" />
 							</a>
 							<div class="card-body">
@@ -308,7 +319,7 @@
 					<!-- Fashion 3 -->
 					<div class="col">
 						<div class="card h-100">
-							<a href="artikel3.html">
+							<a href="/artikel3">
 								<img src="../image/outfit3.jpg" class="card-img-top" alt="Foto Zimar" />
 							</a>
 							<div class="card-body">
@@ -332,7 +343,7 @@
 					<!-- Fashion 4 -->
 					<div class="col">
 						<div class="card h-100">
-							<a href="artikel4.html">
+							<a href="/artikel4">
 								<img src="../image/outfit4.jpg" class="card-img-top" alt="Foto John" />
 							</a>
 							<div class="card-body">
@@ -355,7 +366,7 @@
 					<!-- Fashion 5 -->
 					<div class="col">
 						<div class="card h-100">
-							<a href="artikel5.html">
+							<a href="/artikel5">
 								<img src="../image/outfit5.jpg" class="card-img-top" alt="Foto Sarah" />
 							</a>
 							<div class="card-body">
@@ -378,7 +389,7 @@
 					<!-- Fashion 6 -->
 					<div class="col">
 						<div class="card h-100">
-							<a href="artikel6.html">
+							<a href="/artikel6">
 								<img src="../image/outfit6.jpg" class="card-img-top" alt="Foto Lisa" />
 							</a>
 							<div class="card-body">
@@ -401,7 +412,7 @@
 					<!-- Fashion 7 -->
 					<div class="col">
 						<div class="card h-100">
-							<a href="artikel7.html">
+							<a href="/artikel7">
 								<img src="../image/outfit7.jpg" class="card-img-top" alt="Foto John" />
 							</a>
 							<div class="card-body">
@@ -423,7 +434,7 @@
 					<!-- Fashion 8 -->
 					<div class="col">
 						<div class="card h-100">
-							<a href="artikel8.html">
+							<a href="/artikel8">
 								<img src="../image/outfit8.jpg" class="card-img-top" alt="Foto Sarah" />
 							</a>
 							<div class="card-body">
@@ -445,7 +456,7 @@
 					<!-- Fashion 9 -->
 					<div class="col">
 						<div class="card h-100">
-							<a href="artikel9.html">
+							<a href="/artikel9">
 								<img src="../image/outfit9.jpg" class="card-img-top" alt="Foto Lisa" />
 							</a>
 							<div class="card-body">
@@ -1072,9 +1083,7 @@
 									<h5 class="card-title fw-bold">
 										535230219
 									</h5>
-									<p class="text-muted">
-										Founder & Developer
-									</p>
+									<p class="text-white">Founder & Developer</p>
 									<p class="card-text">
 										Moch Dziko Fauzan
 										Kusuma Amaldin
@@ -1105,9 +1114,7 @@
 									<h5 class="card-title fw-bold">
 										535230215
 									</h5>
-									<p class="text-muted">
-										Founder & Ceo
-									</p>
+									<p class="text-white">Founder & Developer</p>
 									<p class="card-text">
 										Oscar Elmander
 										Kusuma merupakan
@@ -1137,9 +1144,7 @@
 									<h5 class="card-title fw-bold">
 										535230212
 									</h5>
-									<p class="text-muted">
-										Founder & Developer
-									</p>
+									<p class="text-white">Founder & Developer</p>
 									<p class="card-text">
 										Gregorius Wilbert
 										Gunawan merupakan
@@ -1271,52 +1276,30 @@
 	<!-- AngularJS Controller -->
 	<script>
 		function myFunction() {
-			var input =
-				document.getElementById(
-					'myInput'
-				);
-			var filter =
-				input.value.toUpperCase();
-			var ul =
-				document.getElementById(
-					'myUL'
-				);
-			var li =
-				ul.getElementsByTagName('li');
+			var input = document.getElementById('myInput');
+			var filter = input.value.toUpperCase();
 
-			// Display the <ul> when the user starts typing (non-empty input)
-			if (filter.length > 0) {
-				ul.style.display = '';
-			} else {
-				ul.style.display = 'none';
+			var articles = document.querySelectorAll('#article-container');
+
+			if (filter === "") {
+				articles.forEach(function (article) {
+					article.style.display = 'none';
+				});
 			}
-
-			// Filter the list based on input
-			for (
-				var i = 0;
-				i < li.length;
-				i++
-			) {
-				var a =
-					li[i].getElementsByTagName(
-						'a'
-					)[0];
-				var txtValue =
-					a.textContent ||
-					a.innerText;
-
-				if (
-					txtValue
-						.toUpperCase()
-						.indexOf(filter) > -1
-				) {
-					li[i].style.display = '';
-				} else {
-					li[i].style.display =
-						'none';
-				}
+			else {
+				articles.forEach(function (article) {
+					var title = article.querySelector('.article-title');
+					if (title && title.innerText.toUpperCase().indexOf(filter) > -1) {
+						article.style.display = '';
+					} else {
+						article.style.display = 'none';
+					}
+				});
 			}
 		}
+
+
+
 	</script>
 	<script>
 		function checkLoginStatus() {

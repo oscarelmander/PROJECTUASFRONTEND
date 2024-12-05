@@ -1,7 +1,5 @@
-// Define AngularJS module
-var app = angular.module('myApp', []);
+var app = angular.module('PADZApp', []);
 
-// Main controller with light/dark mode toggle functionality and comments
 app.controller('mainController', function ($scope) {
 	// Light/Dark Mode
 	$scope.isLightMode = true;
@@ -128,6 +126,6 @@ app.controller('ratingController', function ($scope) {
 	};
 });
 
-app.controller('SidebarController', function ($scope, $location) {
+app.controller('sidebarController', function ($scope, $location) {
 	$scope.currentURL = $location.absUrl().split('/').pop();
 });
