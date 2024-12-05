@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+	<title>Create Account</title>
+	<style>
+		body {
+			margin: 0;
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.container {
+			width: 100%;
+			max-width: 800px;
+			background: #fff;
+			border-radius: 8px;
+			box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+			display: flex;
+			flex-wrap: wrap;
+			overflow: hidden;
+		}
+
+		.left {
+			flex: 1;
+			background-color: black;
+			color: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 2rem;
+			font-weight: bold;
+			padding: 20px;
+		}
+
+		.right {
+			flex: 1;
+			padding: 40px;
+		}
+
+		.right h2 {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+
+		.right form label {
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		.right form input,
+		.right form button {
+			width: 100%;
+			padding: 15px;
+			margin-bottom: 15px;
+			border-radius: 4px;
+			box-sizing: border-box;
+			font-size: 1rem;
+		}
+
+		.right form input {
+			border: 1px solid #ccc;
+		}
+
+		.right form button {
+			border: none;
+			background-color: #007bff;
+			color: #fff;
+			cursor: pointer;
+		}
+
+		.right p {
+			text-align: center;
+			margin-top: 15px;
+		}
+
+		/* Mobile view */
+		@media (max-width: 768px) {
+			.left {
+				flex: 1 1 100%;
+				font-size: 1.5rem;
+				padding: 10px;
+			}
+
+			.right {
+				flex: 1 1 100%;
+				padding: 20px;
+			}
+		}
+	</style>
+</head>
+
+<body ng-app="PADZApp" ng-controller="registerController">
+	<div class="container">
+		<div class="left">PADZ</div>
+		<div class="right">
+			<h2>Create Account</h2>
+			<form ng-submit="submitForm()">
+				<label for="name">Name</label>
+				<input type="text" id="name" ng-model="user.name" placeholder="Enter your name" required />
+
+				<label for="email">Email</label>
+				<input type="email" id="email" ng-model="user.email" placeholder="Enter your email" required />
+
+				<label for="password">Password</label>
+				<input type="password" id="password" ng-model="user.password" placeholder="Enter your password"
+					required />
+
+				<label for="confirm-password">Confirm Password</label>
+				<input type="password" id="confirm-password" ng-model="user.confirmPassword"
+					placeholder="Confirm your password" required />
+
+				<button type="submit">
+					Create Account
+				</button>
+			</form>
+			<p>
+				Already have an account?
+				<a href="/loginPage" style="color: #007bff">Login</a>
+			</p>
+		</div>
+	</div>
+
+	<script src="/assets/scripts/registerController.js"></script>
+</body>
+
+</html>

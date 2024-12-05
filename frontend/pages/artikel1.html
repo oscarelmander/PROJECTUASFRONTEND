@@ -129,7 +129,7 @@
 				<div class=" comments-list">
 							<div class="card mb-3" ng-repeat="comment in comments track by $index">
 								<div class="card-body">
-									<h5 class="card-title">User {{ $index + 1 }}</h5>
+									<h5 class="card-title">{{comment.penulis}}</h5>
 									<p class="card-text">{{ comment.isiKomentar }}</p>
 									<p class="text-muted small">Ditulis pada {{ comment.timestamp | date:'medium' }}</p>
 								</div>

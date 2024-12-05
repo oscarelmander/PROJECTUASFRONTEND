@@ -1,6 +1,22 @@
 var app = angular.module('PADZApp', []);
 
 app.controller('mainController', function ($scope) {
+	$scope.sudahLogin = localStorage.getItem('token') !== null;
+    console.log($scope.sudahLogin);
+	console.log("cek");
+	// console.log(localStorage.getItem('nama'));
+    
+    $scope.handleLoginClick = function() {
+        if ($scope.sudahLogin) {
+            // logout();
+            window.location.href = "/profilePage";
+			console.log("haloooo");
+        } else {
+            console.log(localStorage.getItem('nama'));
+            window.location.href = '/loginPage';
+        }
+    };
+
 	// Light/Dark Mode
 	$scope.isLightMode = true;
 
