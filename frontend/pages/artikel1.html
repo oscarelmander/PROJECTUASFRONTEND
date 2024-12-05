@@ -119,22 +119,21 @@
 				<h3 class="text-white">Kolom Komentar</h3>
 				<form ng-submit="addComment()">
 					<div class="add-comment mb-4">
-						<input type="hidden" ng-model="newComment.nomorArtikel"
-							ng-init="newComment.nomorArtikel='artikel1'">
+						<input type="hidden" ng-model="newComment.nomorArtikel" ng-init="newComment.nomorArtikel='artikel1'">
 						<textarea class="form-control" ng-model="newComment.text" rows="3"
 							placeholder="Tulis komentar Anda di sini..." required></textarea>
 						<button class="btn btn-primary mt-2 w-100" type="submit"">Kirim Komentar</button>
 					</div>
 				</form>
-				<div class=" comments-list">
-							<div class="card mb-3" ng-repeat="comment in comments track by $index">
-								<div class="card-body">
-									<h5 class="card-title">{{comment.penulis}}</h5>
-									<p class="card-text">{{ comment.isiKomentar }}</p>
-									<p class="text-muted small">Ditulis pada {{ comment.timestamp | date:'medium' }}</p>
-								</div>
-							</div>
+				<div class="comments-list">
+					<div class="card mb-3" ng-repeat="comment in comments track by $index">
+						<div class="card-body">
+							<h5 class="card-title">{{comment.penulis}}</h5>
+							<p class="card-text">{{ comment.isiKomentar }}</p>
+							<p class="text-muted small">Ditulis pada {{ comment.timestamp | date:'medium' }}</p>
+						</div>
 					</div>
+				</div>
 			</div>
 
 		</div>
@@ -191,7 +190,7 @@
 		window.onload = checkLoginStatus;
 	</script>
 
-	<script src="/assets/scripts/commentsController.js"></script>
+<script src="/assets/scripts/commentsController.js"></script>
 </body>
 
 </html>

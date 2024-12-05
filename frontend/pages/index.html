@@ -1282,15 +1282,15 @@
 			var articles = document.querySelectorAll('#article-container');
 
 			if (filter === "") {
-				articles.forEach(function (article) {
+				articles.forEach(function(article) {
 					article.style.display = 'none';
 				});
 			}
-			else {
-				articles.forEach(function (article) {
+			else{
+				articles.forEach(function(article) {
 					var title = article.querySelector('.article-title');
 					if (title && title.innerText.toUpperCase().indexOf(filter) > -1) {
-						article.style.display = '';
+						article.style.display = ''; 
 					} else {
 						article.style.display = 'none';
 					}
