@@ -1,0 +1,164 @@
+<nav class="navbar navbar-expand-lg sticky-top"
+	ng-class="{'navbar-light bg-light': isLightMode, 'navbar-dark bg-black': !isLightMode}">
+
+	<div class="container-fluid d-flex justify-content-between align-items-center">
+		<a class="navbar-brand" style="font-size: 40px; font-weight: bold;" href="index.html">PADZ</a>
+
+		<!-- search-->
+		<div class="d-flex align-items-center">
+			<div class="search-container">
+				<div class="input-group">
+					<span class="input-group-text" id="search-icon">
+						<i class="fas fa-search"></i> <!-- Ikon kaca pembesar -->
+					</span>
+					<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cari Artikel"
+						title="Type in a name" class="form-control">
+				</div>
+			</div>
+
+			<!-- Subscribe button -->
+			<!-- <i class="fas fa-bell me-3 subs_button" ng-click="subscribeAlert()" style="cursor: pointer"></i> ( untuk pop up lanngsung dari chrome )-->
+			<!-- untuk pop up modal-->
+			<i class="fas fa-bell me-3 subs_button" data-bs-toggle="modal" data-bs-target="#subscribeModal"></i>
+			<!-- toogle switch mode-->
+			<i class="fas me-3" id="toogle_dark_light" ng-click="toggleTheme()"
+				ng-class="isLightMode ? 'fa-sun' : 'fa-moon'"></i>
+			<!-- toogle login-->
+			<a class="fas me-3" id="toogle_login" ng-class="{'fa-user': !isLoggedIn, 'fa-sign-out-alt': isLoggedIn}"
+				ng-click="handleLoginClick()" ng-href="login.html" title="{{ isLoggedIn ? 'Logout' : 'Login' }}"
+				style="text-decoration: none"></a>
+
+			<!-- toogle hambuger stip 3 -->
+			<div class="dropdown ms-1">
+				<span class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">☰</span>
+				<ul class="dropdown-menu dropdown-menu-end">
+					<li>
+						<a class="dropdown-item" href="index.html#home">HOME</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="index.html#fashion-style-padz">FASHION STYLE PADZ</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="index.html#rekomendasi-fashion-style">REKOMENDASI FASHION
+							STYLE</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="index.html#berita-fashion">BERITA SEPUTAR FASHION</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="index.html#tentang-kami">TENTANG KAMI</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="index.html#contact">CONTACT</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<audio id="audio_player" ng-src="{{audioSrc}}" preload="auto">
+	</audio>
+</nav>
+
+<!-- Subscribe Modal -->
+<div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content"
+			style="background-image: url('../image/21-3.jpg'); background-size: cover; background-position: center; color: white;">
+			<div class="modal-header">
+				<h5 class="modal-title" id="subscribeModalLabel" style="color: rgb(255, 0, 0);">Thank You for
+					Subscribe!</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p style="color: rgb(255, 255, 255);">Thank you for supporting us! Here’s the link to join our
+					community group:
+				</p>
+				<p><a href="https://chat.whatsapp.com/GiPZlfIxHc4DR3xxUOA9ud" target="_blank">Join WhatsApp
+						Group</a>
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- code di bawah ini untuk menampilkan artikel di search navbar-->
+<div>
+	<ul id="myUL" style="display: none; padding: 20px">
+		<li>
+			<a href="artikel1.html">Berikut Fashion Style Yang
+				Dikenakan Dziko
+			</a>
+		</li>
+		<li>
+			<a href="artikel2.html">Wow Mengejutkan Ternyata Inilah
+				Rahasia Dibalik Penampilan
+				Hypebeast Mahasiswa Bernama
+				Oscar!
+			</a>
+		</li>
+		<li>
+			<a href="artikel3.html">Berikut Setelan Formal Wilbert
+				Yang Sangat Cocok Di Pakai Untuk
+				Gen Z</a>
+		</li>
+		<li>
+			<a href="artikel4.html">Tren Oversized yang Sedang
+				Digemari Kaum Muda</a>
+		</li>
+		<li>
+			<a href="artikel5.html">Inspirasi Outfit Santai untuk
+				Akhir Pekan</a>
+		</li>
+		<li>
+			<a href="artikel6.html">Fashion Vintage yang Kembali
+				Populer di Kalangan Gen Z</a>
+		</li>
+		<li>
+			<a href="artikel7.html">Pakaian yang sangat cocok di pakai ketika di atas gunung jika ingin tetap bergaya
+				fashion style</a>
+		</li>
+		<li>
+			<a href="artikel8.html">Streetwear modern dengan gaya kasual, monochrome, dan sneakers mencolok sangat cocok
+				di pakai bepergian malam hari</a>
+		</li>
+		<li>
+			<a href="artikel9.html">Rekomendasi Fashion streatwear yang sangat cocok ketika di pakai untuk traveling</a>
+		</li>
+		<li>
+			<a
+				href="https://www.versace.com/id/en/?ranSiteID=jXNTGICLCkU-iekjFbi9KynrxpuVhG7GJg&ranEAID=jXNTGICLCkU&ranMID=50522&utm_content=10&utm_campaign=
+				3930588%3AFANSTOSHOP&utm_medium=affiliate&utm_source=rakutenadvertising&wt_mc=US.affiliate.rakuten.10.1667121.FANSTOSHOP">Versace</a>
+		</li>
+		<li>
+			<a
+				href="https://fearofgod.com/collections/essentials?srsltid=AfmBOorE74VXNHm-aQhm984T-zYe5w5JicIcaZ_OPXcPWKn318rKEKbh">Fear
+				Of God</a>
+		</li>
+		<li>
+			<a href="https://www.stussy.com/">Stussy</a>
+		</li>
+		<li>
+			<a href="https://www.nike.com/id/">Nike</a>
+		</li>
+		<li>
+			<a href="https://jp.supreme.com/pages/shop">Supreme</a>
+		</li>
+		<li>
+			<a href="https://www.off---white.com/en-id/">Off
+				White</a>
+		</li>
+		<li>
+			<a href="https://www.hecatesofficial.com/">Hecate</a>
+		</li>
+		<li>
+			<a href="https://rucas.shop/">Rucas</a>
+		</li>
+		<li>
+			<a href="https://int.bape.com/">A
+				Bathing Ape</a>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp"> <!--Direktif AngularJS yang menginisialisasi aplikasi AngularJS dengan nama myApp-->
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>PADZ OFFICIAL</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+	<!-- Custom CSS -->
+	<link href="../assets/css/styles.css" rel="stylesheet" />
+
+
+	<!-- AngularJS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="mainController" ng-class="{'light-mode': isLightMode, 'dark-mode': !isLightMode}">
+	<!-- Animated Background -->
+	<div class="animated-background">
+		<!-- Multiple tech shapes for the animation -->
+		<div class="tech-shape circle" style="
+					--i: 1;
+					left: 10%;		
+					top: 0;
+				"></div>
+		<div class="tech-shape circle" style="
+					--i: 2;
+					left: 20%;
+					top: 0;
+				"></div>
+		<div class="tech-shape square" style="
+					--i: 3;
+					left: 30%;
+					top: 0;
+				"></div>
+		<div class="tech-shape square" style="
+					--i: 4;
+					left: 40%;
+					top: 0;
+				"></div>
+		<div class="tech-shape circle" style="
+					--i: 5;
+					left: 50%;
+					top: 0;
+				"></div>
+		<div class="tech-shape circle" style="
+					--i: 6;
+					left: 60%;
+					top: 0;
+				"></div>
+		<div class="tech-shape square" style="
+					--i: 7;
+					left: 70%;
+					top: 0;
+				"></div>
+		<div class="tech-shape square" style="
+					--i: 8;
+					left: 80%;
+					top: 0;
+				"></div>
+		<div class="tech-shape circle" style="
+					--i: 1;
+					left: 10%;
+					top: 0;
+				"></div>
+		<div class="tech-shape circle" style="
+					--i: 2;
+					left: 20%;
+					top: 0;
+				"></div>
+		<div class="tech-shape square" style="
+					--i: 3;
+					left: 30%;
+					top: 0;
+				"></div>
+		<div class="tech-shape square" style="
+					--i: 4;
+					left: 40%;
+					top: 0;
+				"></div>
+		<div class="tech-shape circle" style="
+					--i: 5;
+					left: 50%;
+					top: 0;
+				"></div>
+		<div class="tech-shape circle" style="
+					--i: 6;
+					left: 60%;
+					top: 0;
+				"></div>
+		<div class="tech-shape square" style="
+					--i: 7;
+					left: 70%;
+					top: 0;
+				"></div>
+		<div class="tech-shape square" style="
+					--i: 8;
+					left: 80%;
+					top: 0;
+				"></div>
+	</div>
+
+	<!-- Navbar (Memanggil navbar.html di dalam file terpisah)-->
+	<div ng-include="'navbar.html'"></div>
+
+	<!-- Music Player  di Body-->
+	<div class="music-player position-fixed bottom-0 end-0 m-3 bg-transparent text-light p-3 rounded shadow d-flex align-items-center"
+		id="music_player">
+		<!-- Album Cover -->
+		<img src="../image/21-3.jpg" alt="Album Cover" class="rounded-circle me-3 album-cover"
+			style="width: 50px; height: 50px; object-fit: cover;">
+
+		<!-- Music Info -->
+		<div class="d-flex flex-column flex-grow-1 music-info">
+			<p class="mb-0" style="font-weight: bold; font-size: 16px;">Padz Song</p>
+			<small class="text-white">Oscar ft Dziko</small>
+
+			<!-- Progress Bar Music -->
+			<div class="progress mt-2" style="height: 4px;">
+				<div class="progress-bar" id="music_progress" role="progressbar" style="width: 0%;" aria-valuenow="0"
+					aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
+
+			<!-- Timer Music -->
+			<div class="d-flex justify-content-between mt-1" style="font-size: 12px;">
+				<span id="current_time">00:00</span>
+				<span id="total_time">00:00</span>
+			</div>
+		</div>
+
+		<!-- Play Button Music -->
+		<button id="play_button" class="btn btn-sm btn-warning ms-3 play-button">
+			<i class="fas fa-play"></i>
+		</button>
+
+		<!-- Hidden Audio Element Music -->
+		<audio id="music_audio" preload="auto">
+			<source src="../violent.mp3" type="audio/mpeg">
+			Browser Anda tidak mendukung elemen audio.
+		</audio>
+	</div>
+
+	<!-- ini Navbar lama kami, alasan tidak mengahapusnya karena untuk keperluan dokumentasi kami-->
+	<!-- <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#home">PADZ</a>
+
+            <button class="btn btn-primary btn-night-mode" ng-click="toggleNightMode()">
+                        {{ isNightMode ? 'Switch to Light Mode' : 'Switch to Night Mode' }}
+                    </button>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="burgermenu.svg" alt="Menu" class="svg-icon" width="24" height="24">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#home">HOME</a></li>
+                            <li><a class="dropdown-item" href="#fashion-style-padz">FASHION STYLE PADZ</a></li>
+                            <li><a class="dropdown-item" href="#rekomendasi-fashion-style">REKOMENDASI FASHION STYLE</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#berita-fashion">BERITA SEPUTAR FASHION</a></li>
+                            <li><a class="dropdown-item" href="#tentang-kami">TENTANG KAMI</a></li>
+                            <li><a class="dropdown-item" href="#contact">CONTACT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+
+	<!-- Carousel Gambar Slide Otomatis  -->
+	<div class="carousel">
+		<div class="carousel-slide">
+			<img src="../image/21-3.jpg" alt="1" />
+			<img src="../image/21-3.jpg" alt="1" />
+			<img src="../image/21-3.jpg" alt="1" />
+			<img src="../image/21-3.jpg" alt="1" />
+			<img src="../image/21-3.jpg" alt="1" />
+			<img src="../image/21-3.jpg" alt="1" />
+			<img src="../image/21-3.jpg" alt="1" />
+			<img src="../image/21-3.jpg" alt="1" />
+			<img src="../image/21-3.jpg" alt="1" />
+		</div>
+	</div>
+
+	<!-- Section HOME -->
+	<div class="container">
+		<section id="home" class="section text-center d-flex flex-column align-items-center justify-content-center">
+			<!-- Title -->
+			<h2 class="text-uppercase fw-bold mb-4" style="font-size: 2.5rem">
+				HOME
+			</h2>
+			<p class="text-center mb-5" style="font-size: 1.2rem">
+				Temui tim kami yang
+				berdedikasi dan siap untuk
+				menginspirasi dunia fashion.
+				Kami percaya bahwa setiap gaya
+				memiliki cerita yang unik.
+			</p>
+
+			<!-- Centered Image with Circular Shape -->
+			<div class="mb-3">
+				<img src="../image/padz2.jpg" alt="PADZ Logo" class="rounded-circle img-fluid shadow" style="
+							width: 300px;
+							height: 300px;
+							object-fit: cover;
+						" />
+			</div>
+
+			<!-- Welcome Text Below the Image -->
+			<h3 class="fw-bold mb-2" style="font-size: 2rem">
+				WELCOME TO PADZ
+			</h3>
+
+			<p class="text-center mb-5" style="font-size: 1.2rem">
+				Temukan inspirasi gaya dan
+				tren fashion terkini yang akan
+				membuat penampilan Anda
+				semakin stylish dan percaya
+				diri. Kami hadir untuk
+				membantu Anda menemukan style
+				yang sesuai dengan kepribadian
+				dan kebutuhan Anda. Dari
+				outfit kasual hingga busana
+				formal, tips mix and match,
+				hingga panduan tren
+				terbaru—semua tersedia di
+				sini.
+			</p>
+			<p class="text-center mb-5" style="font-size: 1.2rem">
+				Jelajahi dan temukan inspirasi
+				fashion Anda bersama kami!
+			</p>
+		</section>
+
+		<!-- Section Fashion Style PADZ-->
+		<section id="fashion-style-padz" class="section">
+			<h2>FASHION STYLE PADZ</h2>
+			<p class="text-center mb-5" style="font-size: 1.2rem">
+				Temui tim kami yang
+				berdedikasi dan siap untuk
+				menginspirasi dunia fashion.
+				Kami percaya bahwa setiap gaya
+				memiliki cerita yang unik.
+			</p>
+			<div class="container my-5">
+				<div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+					<!-- Fashion 1 -->
+					<div class="col">
+						<div class="card h-100">
+							<a href="artikel1.html">
+								<img src="../image/outfit1.jpg" class="card-img-top" alt="Foto Dziko" />
+							</a>
+							<div class="card-body">
+								<p class="article-category">
+									STYLE & TRENDS
+								</p>
+								<h5 class="article-title">
+									Berikut Fashion
+									Style Yang Dikenakan
+									Dziko
+								</h5>
+								<p class="article-date">
+									PADZ Official - 30
+									September 2024
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Fashion 2 -->
+					<div class="col">
+						<div class="card h-100">
+							<a href="artikel2.html">
+								<img src="../image/outfit2.jpg" class="card-img-top" alt="Foto Wilbert" />
+							</a>
+							<div class="card-body">
+								<p class="article-category">
+									STYLE & TRENDS
+								</p>
+								<h5 class="article-title">
+									Wow Mengejutkan
+									Ternyata Inilah
+									Rahasia Dibalik
+									Penampilan Hypebeast
+									Mahasiswa Bernama
+									Oscar!
+								</h5>
+								<p class="article-date">
+									PADZ Official - 1
+									Oktober 2024
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Fashion 3 -->
+					<div class="col">
+						<div class="card h-100">
+							<a href="artikel3.html">
+								<img src="../image/outfit3.jpg" class="card-img-top" alt="Foto Zimar" />
+							</a>
+							<div class="card-body">
+								<p class="article-category">
+									STYLE & TRENDS
+								</p>
+								<h5 class="article-title">
+									Berikut Setelan
+									Formal Wilbert Yang
+									Sangat Cocok Di
+									Pakai Untuk Gen Z
+								</h5>
+								<p class="article-date">
+									PADZ Official - 3
+									Oktober 2024
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Fashion 4 -->
+					<div class="col">
+						<div class="card h-100">
+							<a href="artikel4.html">
+								<img src="../image/outfit4.jpg" class="card-img-top" alt="Foto John" />
+							</a>
+							<div class="card-body">
+								<p class="article-category">
+									STYLE & TRENDS
+								</p>
+								<h5 class="article-title">
+									Tren Oversized yang
+									Sedang Digemari Kaum
+									Muda
+								</h5>
+								<p class="article-date">
+									PADZ Official - 5
+									Oktober 2024
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Fashion 5 -->
+					<div class="col">
+						<div class="card h-100">
+							<a href="artikel5.html">
+								<img src="../image/outfit5.jpg" class="card-img-top" alt="Foto Sarah" />
+							</a>
+							<div class="card-body">
+								<p class="article-category">
+									STYLE & TRENDS
+								</p>
+								<h5 class="article-title">
+									Inspirasi Outfit
+									Santai untuk Akhir
+									Pekan
+								</h5>
+								<p class="article-date">
+									PADZ Official - 6
+									Oktober 2024
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Fashion 6 -->
+					<div class="col">
+						<div class="card h-100">
+							<a href="artikel6.html">
+								<img src="../image/outfit6.jpg" class="card-img-top" alt="Foto Lisa" />
+							</a>
+							<div class="card-body">
+								<p class="article-category">
+									STYLE & TRENDS
+								</p>
+								<h5 class="article-title">
+									Fashion Vintage yang
+									Kembali Populer di
+									Kalangan Gen Z
+								</h5>
+								<p class="article-date">
+									PADZ Official - 7
+									Oktober 2024
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Fashion 7 -->
+					<div class="col">
+						<div class="card h-100">
+							<a href="artikel7.html">
+								<img src="../image/outfit7.jpg" class="card-img-top" alt="Foto John" />
+							</a>
+							<div class="card-body">
+								<p class="article-category">
+									STYLE & TRENDS
+								</p>
+								<h5 class="article-title">
+									Pakaian yang sangat cocok di pakai ketika di atas gunung jika ingin tetap bergaya
+									fashion style
+								</h5>
+								<p class="article-date">
+									PADZ Official - 13
+									November 2024
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Fashion 8 -->
+					<div class="col">
+						<div class="card h-100">
+							<a href="artikel8.html">
+								<img src="../image/outfit8.jpg" class="card-img-top" alt="Foto Sarah" />
+							</a>
+							<div class="card-body">
+								<p class="article-category">
+									STYLE & TRENDS
+								</p>
+								<h5 class="article-title">
+									Streetwear modern dengan gaya kasual, monochrome, dan sneakers mencolok sangat cocok
+									di pakai bepergian malam hari
+								</h5>
+								<p class="article-date">
+									PADZ Official - 15
+									November 2024
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Fashion 9 -->
+					<div class="col">
+						<div class="card h-100">
+							<a href="artikel9.html">
+								<img src="../image/outfit9.jpg" class="card-img-top" alt="Foto Lisa" />
+							</a>
+							<div class="card-body">
+								<p class="article-category">
+									STYLE & TRENDS
+								</p>
+								<h5 class="article-title">
+									Rekomendasi Fashion streatwear yang sangat cocok ketika di pakai untuk traveling
+								</h5>
+								<p class="article-date">
+									PADZ Official - 18
+									November 2024
+								</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<!--  Section Rekomendasi Fashion Style -->
+		<section id="rekomendasi-fashion-style" class="section">
+			<h2 class="text-uppercase fw-bold mb-4" style="font-size: 2.5rem">
+				REKOMENDASI FASHION STYLE
+			</h2>
+			<p class="text-center mb-5" style="font-size: 1.2rem">
+				Temui tim kami yang
+				berdedikasi dan siap untuk
+				menginspirasi dunia fashion.
+				Kami percaya bahwa setiap gaya
+				memiliki cerita yang unik.
+			</p>
+
+			<div class="container my-5">
+				<div class="row row-cols-1 row-cols-md-3 g-4">
+					<!-- Fashion Recommendation 1 -->
+					<div class="col">
+						<div class="card h-100 border-0 shadow">
+							<img src="https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw1d8d62d2/original/90_E76GAGT02-ECJ01T_EG89_18_V~EmblemPoloShirt-T~Shirts~~Polos-Versace-online-store_0_2.jpg?sw=850&q=85&strip=true"
+								class="card-img-top" alt="Fashion Style 1" style="
+										height: 250px;
+										object-fit: cover;
+									" />
+							<div class="card-body">
+								<h5 class="card-title">
+									VERSACE
+								</h5>
+								<p class="card-text">
+									Versace Merupakan
+									brand yang baru baru
+									ini sedang populer
+									di dunia fashion
+								</p>
+							</div>
+							<div class="card-footer bg-gray-200 border-0">
+								<a href="https://www.versace.com/id/en/?ranSiteID=jXNTGICLCkU-iekjFbi9KynrxpuVhG7GJg&ranEAID=jXNTGICLCkU&ranMID=50522&utm_content=10&utm_campaign=3930588%3AFANSTOSHOP&utm_medium=affiliate&utm_source=rakutenadvertising&wt_mc=US.affiliate.rakuten.10.1667121.FANSTOSHOP"
+									class="btn btn-outline-dark w-100">
+									Lihat Selengkapnya
+								</a>
+							</div>
+
+						</div>
+					</div>
+
+					<!-- Fashion Recommendation 2 -->
+					<div class="col">
+						<div class="card h-100 border-0 shadow">
+							<img src="https://fearofgod.com/cdn/shop/files/6_2742-x-3660_900x.jpg?v=1727291771"
+								class="card-img-top" alt="Fashion Style 2" style="
+										height: 250px;
+										object-fit: cover;
+									" />
+							<div class="card-body">
+								<h5 class="card-title">
+									FEAR OF GOD
+								</h5>
+								<p class="card-text">
+									Fear Of God baru
+									baru ini brand yang
+									sangat diburu di
+									kalangan anak remaja
+								</p>
+							</div>
+							<div class="card-footer bg-gray-200 border-0">
+								<a href="https://fearofgod.com/collections/essentials?srsltid=AfmBOorE74VXNHm-aQhm984T-zYe5w5JicIcaZ_OPXcPWKn318rKEKbh"
+									class="btn btn-outline-dark w-100">Lihat
+									Selengkapnya</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Fashion Recommendation 3 -->
+					<div class="col">
+						<div class="card h-100 border-0 shadow">
+							<img src="https://www.stussy.com/cdn/shop/files/118564_WABL_3_cf328d83-9ad7-47e1-a771-675e605a805f.jpg?v=1728491252&width=1920"
+								class="card-img-top" alt="Fashion Style 3" style="
+										height: 250px;
+										object-fit: cover;
+									" />
+							<div class="card-body">
+								<h5 class="card-title">
+									STUSSY
+								</h5>
+								<p class="card-text">
+									Stussy merupakan
+									salah satu brand
+									streetwear yang
+									sangat populer di
+									seluruh dunia
+								</p>
+							</div>
+							<div class="card-footer bg-gray-200 border-0">
+								<a href="https://www.stussy.com/" class="btn btn-outline-dark w-100">Lihat
+									Selengkapnya</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Fashion Recommendation 4 -->
+					<div class="col">
+						<div class="card h-100 border-0 shadow">
+							<img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/b6810fa4-2987-4086-87c0-ca2a8363bccb/U+NK+SB+BOWLER+SSBTNUP+O+USA.png"
+								class="card-img-top" alt="Fashion Style 1" style="
+										height: 250px;
+										object-fit: cover;
+									" />
+							<div class="card-body">
+								<h5 class="card-title">
+									NIKE
+								</h5>
+								<p class="card-text">
+									Brand Nike pun kerap
+									dijadikan outfit
+									andalan bagi para
+									pecinta gaya
+									streetwear seperti
+									T-Shirt, jersey,
+									celana jins, celana
+									pendek, jaket,
+									hoodie dan
+									sweatshirt.
+								</p>
+							</div>
+							<div class="card-footer bg-gray-200 border-0">
+								<a href="https://www.nike.com/id/" class="btn btn-outline-dark w-100">Lihat
+									Selengkapnya</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Fashion Recommendation 5 -->
+					<div class="col">
+						<div class="card h-100 border-0 shadow">
+							<img src="https://hips.hearstapps.com/es.h-cdn.co/hares/images/moda/noticias-moda/la-coleccion-de-supreme-x-louis-vuitton-de-segunda-mano-en-vestiaire/3999284-5-esl-ES/los-vip-que-sucumbieron-a-supreme-x-louis-vuitton-y-puede-que-ahora-tu-tambien.jpg?crop=0.8059895833333334xw:1xh;center,top&resize=1200:*"
+								class="card-img-top" alt="Fashion Style 2" style="
+										height: 250px;
+										object-fit: cover;
+									" />
+							<div class="card-body">
+								<h5 class="card-title">
+									SUPREME
+								</h5>
+								<p class="card-text">
+									Kehadiran merek
+									Supreme pun seolah
+									membawa penyegaran
+									baru karena kini
+									Supreme menjadi
+									salah satu label
+									streetwear paling
+									berpengaruh dengan
+									berbagai
+									produk-produk
+									ekslusifnya.
+								</p>
+							</div>
+							<div class="card-footer bg-gray-200 border-0">
+								<a href="https://jp.supreme.com/pages/shop" class="btn btn-outline-dark w-100">Lihat
+									Selengkapnya</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Fashion Recommendation 6 -->
+					<div class="col">
+						<div class="card h-100 border-0 shadow">
+							<img src="https://www.off---white.com/BWStaticContent/53000/cc4aec09-a36c-4b21-ad12-fc945f4afe6f_modulo-1-web.jpg"
+								class="card-img-top" alt="Fashion Style 3" style="
+										height: 250px;
+										object-fit: cover;
+									" />
+							<div class="card-body">
+								<h5 class="card-title">
+									OFF-WHITE
+								</h5>
+								<p class="card-text">
+									Mereka menawarkan
+									pakaian, sepatu, dan
+									aksesori dengan
+									sentuhan kontemporer
+									yang tertuang pada
+									desain berdasarkan
+									tipografi dan palet
+									putih dan hitam yang
+									kontras, Off-White
+									juga dikenal akan
+									produknya yang
+									eksklusif dengan
+									harga outfit yang
+									lumayan mahal.
+								</p>
+							</div>
+							<div class="card-footer bg-gray-200 border-0">
+								<a href="https://www.off---white.com/en-id/" class="btn btn-outline-dark w-100">Lihat
+									Selengkapnya</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Fashion Recommendation 7 -->
+					<div class="col">
+						<div class="card h-100 border-0 shadow">
+							<img src="https://d2kchovjbwl1tk.cloudfront.net/vendors/72/assets/image/1726378397199-tee_f1.jpg"
+								class="card-img-top" alt="Fashion Style 1" style="
+																				height: 250px;
+																				object-fit: cover;
+																			" />
+							<div class="card-body">
+								<h5 class="card-title">
+									HECATE
+								</h5>
+								<p class="card-text">
+									Website Hecates Official menawarkan produk fashion kasual dengan gaya yang
+									trendi
+									dan modern, berfokus pada streetwear
+									dan gaya urban.
+								</p>
+							</div>
+							<div class="card-footer bg-gray-200 border-0">
+								<a href="https://www.hecatesofficial.com/" class="btn btn-outline-dark w-100">Lihat
+									Selengkapnya</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Fashion Recommendation 8 -->
+					<div class="col">
+						<div class="card h-100 border-0 shadow">
+							<img src="https://asset-a.grid.id/crop/0x0:0x0/x/photo/2021/12/15/rucasjpg-20211215094913.jpg"
+								class="card-img-top" alt="Fashion Style 2" style="
+																				height: 250px;
+																				object-fit: cover;
+																			" />
+							<div class="card-body">
+								<h5 class="card-title">
+									RUCAS
+								</h5>
+								<p class="card-text">
+									Website RUCAS adalah platform yang menawarkan koleksi fashion pria dengan fokus
+									pada
+									desain kontemporer yang dipasarkan
+									melalui e-commerce dan media sosial. RUCAS menonjolkan pendekatan berkelas dan
+									modern dalam estetika fashion pria, dengan kemungkinan menyasar target pasar
+									urban dan penggemar tren streetwear yang minimalis.
+								</p>
+							</div>
+							<div class="card-footer bg-gray-200 border-0">
+								<a href="https://rucas.shop/" class="btn btn-outline-dark w-100">Lihat
+									Selengkapnya</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Fashion Recommendation 9 -->
+					<div class="col">
+						<div class="card h-100 border-0 shadow">
+							<img src="https://int.bape.com/cdn/shop/files/20241116_FW24_ABC_CAMO_1440x1440_01bae755-b930-46d0-be8c-b2c99fb5022f.jpg?v=1731641853&width=1000"
+								class="card-img-top" alt="Fashion Style 3" style="
+																				height: 250px;
+																				object-fit: cover;
+																			" />
+							<div class="card-body">
+								<h5 class="card-title">
+									A BATHING APE
+								</h5>
+								<p class="card-text">
+									Website A Bathing Ape (BAPE) merupakan platform resmi untuk brand streetwear
+									ikonik
+									asal
+									Jepang. Dengan desain minimalis dan modern, situs ini menampilkan koleksi
+									pakaian,
+									sepatu, dan aksesori eksklusif untuk
+									pria, wanita, dan anak-anak, dengan elemen khas seperti motif kamuflase dan logo
+									Ape
+									Head.
+								</p>
+							</div>
+							<div class="card-footer bg-gray-200 border-0">
+								<a href="https://int.bape.com/" class="btn btn-outline-dark w-100">Lihat
+									Selengkapnya</a>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- Add more recommendations if needed -->
+				</div>
+			</div>
+
+
+
+			<!-- Section Berita Seputar Fashion -->
+			<section id="berita-fashion" class="section my-5">
+				<div class="container">
+					<h2 class="text-center text-uppercase fw-bold mb-4" style="font-size: 2.5rem">
+						BERITA SEPUTAR FASHION
+					</h2>
+					<p class="text-center mb-5" style="font-size: 1.2rem">
+						Temui tim kami yang
+						berdedikasi dan siap untuk
+						menginspirasi dunia fashion.
+						Kami percaya bahwa setiap
+						gaya memiliki cerita yang
+						unik.
+					</p>
+					<div class="row row-cols-1 row-cols-md-3 g-4">
+						<!-- News Article 1 -->
+						<div class="col">
+							<div class="card h-100 border-0 shadow-lg">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Harper%27s_Bazaar_Logo.jpg/1200px-Harper%27s_Bazaar_Logo.jpg"
+									class="card-img-top" alt="Fashion News 1" style="
+										height: 250px;
+										object-fit: contain;
+									" />
+								<div class="card-body">
+									<h5 class="card-title">
+										HARPERSBAZAAR
+									</h5>
+									<p class="card-text">
+										Majalah ini memiliki
+										artikel fashion
+										terbaru, tren
+										kecantikan, serta
+										wawasan tentang gaya
+										hidup mewah dan
+										budaya pop.
+									</p>
+								</div>
+								<div class="card-footer bg-gray-200 border-0">
+									<a href="https://www.harpersbazaar.com/A" class="btn btn-outline-dark w-100">Baca
+										Selengkapnya</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- News Article 2 -->
+						<div class="col">
+							<div class="card h-100 border-0 shadow-lg">
+								<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxSGKitMk0KQntcq6_cETa71jcXL4WmhzmYg&s"
+									class="card-img-top" alt="Fashion News 2" style="
+										height: 250px;
+										object-fit: contain;
+									" />
+								<div class="card-body">
+									<h5 class="card-title">
+										VOGUE
+									</h5>
+									<p class="card-text">
+										Vogue adalah majalah
+										fashion dan
+										lifestyle
+										internasional yang
+										menyajikan berita
+										fashion terkini,
+										tren, wawancara
+										dengan desainer,
+										serta tips gaya
+										hidup.
+									</p>
+								</div>
+								<div class="card-footer bg-gray-200 border-0">
+									<a href="https://www.vogue.com/fashion" class="btn btn-outline-dark w-100">Baca
+										Selengkapnya</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- News Article 3 -->
+						<div class="col">
+							<div class="card h-100 border-0 shadow-lg">
+								<img src="data:image/png;base64,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"
+									class="card-img-top" alt="Fashion News 3" style="
+										height: 250px;
+										object-fit: contain;
+									" />
+								<div class="card-body">
+									<h5 class="card-title">
+										HIGHSNOBIETY
+									</h5>
+									<p class="card-text">
+										Situs yang fokus
+										pada fashion
+										streetwear, budaya
+										pop, dan kolaborasi
+										fashion dengan
+										merek-merek
+										terkenal.
+									</p>
+								</div>
+								<div class="card-footer bg-gray-200 border-0">
+									<a href="https://www.highsnobiety.com/" class="btn btn-outline-dark w-100">Baca
+										Selengkapnya</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- News Article 4 -->
+						<div class="col">
+							<div class="card h-100 border-0 shadow-lg">
+								<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYRtQ1dWgcy9sBreLj_opSFeo8jch12qsGbw&s"
+									class="card-img-top" alt="Fashion News 1" style="
+										height: 250px;
+										object-fit: contain;
+									" />
+								<div class="card-body">
+									<h5 class="card-title">
+										HYPEBEAST
+									</h5>
+									<p class="card-text">
+										Hypebeast adalah
+										situs yang
+										menyajikan berita
+										fashion terkini,
+										khususnya yang
+										berkaitan dengan
+										streetwear,
+										sneakers, dan
+										subkultur mode.
+										Dikenal dengan
+										liputannya tentang
+										tren budaya populer
+										dan kolaborasi
+										eksklusif antara
+										brand fashion,
+										Hypebeast juga
+										menawarkan wawasan
+										seputar desain
+										grafis dan seni
+										kontemporer.
+									</p>
+								</div>
+								<div class="card-footer bg-gray-200 border-0">
+									<a href="https://hypebeast.com/id" class="btn btn-outline-dark w-100">Baca
+										Selengkapnya</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- News Article 5 -->
+						<div class="col">
+							<div class="card h-100 border-0 shadow-lg">
+								<img src="https://www.angelalangford.com/img/cms/grazia%20daily%20logo.jpg"
+									class="card-img-top" alt="Fashion News 2" style="
+										height: 250px;
+										object-fit: contain;
+									" />
+								<div class="card-body">
+									<h5 class="card-title">
+										GRAZIA DALY
+									</h5>
+									<p class="card-text">
+										Grazia adalah
+										majalah gaya hidup
+										wanita yang
+										menawarkan berita
+										terbaru tentang
+										fashion, selebriti,
+										dan gaya hidup.
+										Grazia Daily
+										memberikan insight
+										tentang tren mode,
+										mode jalanan, serta
+										gaya hidup dan
+										kecantikan, dengan
+										sentuhan yang lebih
+										casual dan
+										relatable.
+									</p>
+								</div>
+								<div class="card-footer bg-gray-200 border-0">
+									<a href="https://graziadaily.co.uk/" class="btn btn-outline-dark w-100">Baca
+										Selengkapnya</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- News Article 6 -->
+						<div class="col">
+							<div class="card h-100 border-0 shadow-lg">
+								<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjmIVugyx3GFhqzxp-pcs36otc2VYWHvvimw&s"
+									class="card-img-top" alt="Fashion News 3" style="
+										height: 250px;
+										object-fit: contain;
+									" />
+								<div class="card-body">
+									<h5 class="card-title">
+										FASHIONISTA
+									</h5>
+									<p class="card-text">
+										Fashionista adalah
+										platform berita
+										fashion yang
+										berfokus pada
+										informasi terkini
+										seputar mode,
+										industri, dan
+										desainer. Selain
+										itu, Fashionista
+										juga memberikan
+										analisis mendalam
+										mengenai tren dan
+										masalah di balik
+										layar dunia fashion,
+										termasuk mengenai
+										keberlanjutan dan
+										etika industri
+										fashion.
+									</p>
+								</div>
+								<div class="card-footer bg-gray-200 border-0">
+									<a href="https://fashionista.com/" class="btn btn-outline-dark w-100">Baca
+										Selengkapnya</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- Add more recommendations if needed -->
+					</div>
+				</div>
+			</section>
+
+
+
+
+			<!-- Section Tentang Kami -->
+			<section id="tentang-kami" class="section my-5">
+				<div class="container">
+					<!-- Section Title -->
+					<h2 class="text-center text-uppercase fw-bold mb-4" style="font-size: 2.5rem">
+						TENTANG KAMI
+					</h2>
+					<p class="text-center mb-5" style="font-size: 1.2rem">
+						PADZ adalah salah satu
+						website yang memberikan
+						informasi mengenai FASHION
+						dan seputar LIFESTYLE. Salah
+						satu hal terbaik yang dapat
+						dilakukan kami adalah
+						berfokus pada pemberian
+						informasi dan rekomendasi
+						fashion yang menarik dan
+						terkini yang mungkin bisa
+						menjadi inspirasi anda dalam
+						rekomendasi pemilihan
+						outfit.
+					</p>
+					<p class="text-center mb-5" style="font-size: 1.2rem">
+						Prinsip PADZ adalah
+						memberikan sejumlah artikel
+						dan rekomendasi terbaik yang
+						dibuat tim kami, sehingga
+						dapat membantu banyak orang
+						untuk mendapatkan inspirasi
+						inspirasi yang belum
+						tersampaikan atau bahkan
+						belum terwujud. Kami
+						memberikan model dan ide
+						yang relevan, hits, hingga
+						trendi.
+					</p>
+					<p class="text-center mb-5" style="font-size: 1.2rem">
+						Dengan sentuhan kreatif dan
+						visi yang tak tergoyahkan,
+						PADZ Official perlahan
+						membangun ruang digital ini.
+						Hingga sebuah panggung
+						virtual yang memadukan
+						passion tim PADZ Official
+						terhadap fashion dan gaya
+						hidup modern. Setiap
+						artikel, setiap rekomendasi
+						produk, dan setiap tip gaya
+						yang PADZ Official bagikan
+						adalah cerminan perjalanan
+						PADZ Official dalam
+						mengeksplorasi dunia mode
+						yang dinamis. Website ini
+						bukan sekedar platform
+						melainkan adalah kanvas di
+						mana PADZ Official
+						melukiskan inspirasi dari
+						keragaman budaya untuk
+						menemukan versi terbaik diri
+						mereka melalui pilihan gaya
+						yang autentik.
+					</p>
+
+					<!-- Team Profiles PADZ -->
+					<div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+						<!-- Profile Dziko -->
+						<div class="col">
+							<div class="card h-100 text-center border-0 shadow-lg">
+								<img src="../image/fotodziko.jpg" class="card-img-top rounded-circle mx-auto mt-3"
+									alt="Team Member 1" style="
+										width: 150px;
+										height: 150px;
+										object-fit: cover;
+									" />
+								<div class="card-body">
+									<h5 class="card-title fw-bold">
+										Dziko
+									</h5>
+									<h5 class="card-title fw-bold">
+										535230219
+									</h5>
+									<p class="text-muted">
+										Founder & Developer
+									</p>
+									<p class="card-text">
+										Moch Dziko Fauzan
+										Kusuma Amaldin
+										merupakan mahasiswa
+										yang sedang
+										berkuliah di
+										Universitas
+										Tarumanagara jurusan
+										Teknik Informatika
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Profile Oscar -->
+						<div class="col">
+							<div class="card h-100 text-center border-0 shadow-lg">
+								<img src="../image/fotooscar.jpg" class="card-img-top rounded-circle mx-auto mt-3"
+									alt="Team Member 2" style="
+										width: 150px;
+										height: 150px;
+										object-fit: cover;
+									" />
+								<div class="card-body">
+									<h5 class="card-title fw-bold">
+										Oscar
+									</h5>
+									<h5 class="card-title fw-bold">
+										535230215
+									</h5>
+									<p class="text-muted">
+										Founder & Ceo
+									</p>
+									<p class="card-text">
+										Oscar Elmander
+										Kusuma merupakan
+										mahasiswa yang
+										sedang berkuliah di
+										Universitas
+										Tarumanagara jurusan
+										Teknik Informatika
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Profile Wilbert -->
+						<div class="col">
+							<div class="card h-100 text-center border-0 shadow-lg">
+								<img src="../image/outfit3.jpg" class="card-img-top rounded-circle mx-auto mt-3"
+									alt="Team Member 3" style="
+										width: 150px;
+										height: 150px;
+										object-fit: cover;
+									" />
+								<div class="card-body">
+									<h5 class="card-title fw-bold">
+										Wilbert
+									</h5>
+									<h5 class="card-title fw-bold">
+										535230212
+									</h5>
+									<p class="text-muted">
+										Founder & Developer
+									</p>
+									<p class="card-text">
+										Gregorius Wilbert
+										Gunawan merupakan
+										mahasiswa yang
+										sedang berkuliah di
+										Universitas
+										Tarumanagara jurusan
+										Teknik Informatika
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Add more profiles if needed -->
+					</div>
+
+					<!-- Gambar Pendiri PADZ -->
+					<div class="text-center mt-5">
+						<img src="../image/Pendiri PADZ.jpg" alt="Tentang Kami" class="img-fluid shadow rounded" style="
+								max-width: 80%;
+								height: auto;
+							" />
+					</div>
+				</div>
+			</section>
+
+			<!-- Section Contact -->
+			<section id="contact" class="section text-center" style="
+					background-image: url('../image/21-3.jpg');
+					background-size: cover;
+					background-position: center;
+					padding: 60px 20px;
+					color: rgb(5, 5, 5);
+				">
+				<h2>CONTACT US</h2>
+				<p>
+					Contact us for inquiries or
+					collaborations.
+				</p>
+				<!-- Contact untuk memberi masukan kepada tim PADZ-->
+				<div ng-controller="contactController" class="contact-container bg-dark p-4 rounded text-white">
+					<form id="contact-form" ng-submit="submitForm()">
+						<div class="mb-3">
+							<label for="name" class="form-label">Name</label>
+							<input type="text" id="name" name="name" class="form-control" ng-model="contact.name"
+								required />
+						</div>
+
+						<div class="mb-3">
+							<label for="email" class="form-label">Email</label>
+							<input type="email" id="email" name="email" class="form-control" ng-model="contact.email"
+								required />
+						</div>
+
+						<div class="mb-3">
+							<label for="message" class="form-label">Message</label>
+							<textarea id="message" name="message" class="form-control" ng-model="contact.message"
+								required></textarea>
+						</div>
+
+						<button type="submit" class="btn btn-primary w-100">
+							Send
+						</button>
+					</form>
+				</div>
+
+				<!-- Rating Box Container dengan sepuluh bintang untuk memeberi rating ke pada website PADZ-->
+				<div ng-controller="ratingController" class="rating-container bg-dark p-4 rounded mt-4 text-white">
+					<h3>Rate Our Website</h3>
+					<p>
+						Give us a rating from 1 to
+						10 stars!
+					</p>
+					<div class="stars d-flex justify-content-center">
+						<span ng-repeat="star in stars track by $index" class="star me-1"
+							ng-click="setRating($index + 1)" ng-class="{'active': $index < rating}">
+							★
+						</span>
+					</div>
+					<p class="mt-2">
+						Your rating: {{ rating }}
+						stars
+					</p>
+					<button class="btn btn-primary w-100 mt-3" ng-click="submitRating()">
+						Submit Rating
+					</button>
+				</div>
+			</section>
+	</div>
+
+	<!-- Footer  untuk memanggil footer.html dalam file terpisah-->
+	<div ng-include="'../pages/footer.html'"></div>
+
+	<!-- ini footer lama kami, alasan tidak mengahapusnya karena untuk keperluan dokumentasi kami-->
+	<!-- <footer class="footer py-3 text-center" style="background-color: #696969; ">
+        <h4>FOLLOW US</h4> -->
+
+	<!-- Social Media and Contact Links -->
+	<!-- <div class="social-links"> -->
+	<!-- Instagram -->
+	<!-- <a href="https://www.instagram.com/padzofficial.id/" target="_blank"
+                style=" text-decoration: none; margin: 0 10px;">
+                <i class="fab fa-instagram fa-2x"></i>
+            </a> -->
+
+	<!-- Gmail -->
+	<!-- <a href="mailto:padzofficial@gmail.com" style=" text-decoration: none; margin: 0 10px;">
+                <i class="fas fa-envelope fa-2x"></i> 
+            </a> -->
+
+	<!-- WhatsApp -->
+	<!-- <a href="https://wa.me/6285162767606" target="_blank"
+                style=" text-decoration: none; margin: 0 10px;">
+                <i class="fab fa-whatsapp fa-2x"></i> 
+            </a>
+        </div> -->
+
+	<!-- Footer Text -->
+	<!-- Oscar Elmander Kusuma (535230215) - Moch Dziko (535230219) - Gregorius Wilbert Gunawan (535230212)
+        <p>&copy; 2024 PADZ Official. All rights reserved.</p>
+    </footer> -->
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- font icon ig,wa,gmail -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+	<!-- AngularJS Controller -->
+	<script>
+		function myFunction() {
+			var input =
+				document.getElementById(
+					'myInput'
+				);
+			var filter =
+				input.value.toUpperCase();
+			var ul =
+				document.getElementById(
+					'myUL'
+				);
+			var li =
+				ul.getElementsByTagName('li');
+
+			// Display the <ul> when the user starts typing (non-empty input)
+			if (filter.length > 0) {
+				ul.style.display = '';
+			} else {
+				ul.style.display = 'none';
+			}
+
+			// Filter the list based on input
+			for (
+				var i = 0;
+				i < li.length;
+				i++
+			) {
+				var a =
+					li[i].getElementsByTagName(
+						'a'
+					)[0];
+				var txtValue =
+					a.textContent ||
+					a.innerText;
+
+				if (
+					txtValue
+						.toUpperCase()
+						.indexOf(filter) > -1
+				) {
+					li[i].style.display = '';
+				} else {
+					li[i].style.display =
+						'none';
+				}
+			}
+		}
+	</script>
+	<script>
+		function checkLoginStatus() {
+			const isLoggedIn =
+				localStorage.getItem(
+					'isLoggedIn'
+				) === 'true';
+
+			const loginButton =
+				document.getElementById(
+					'toogle_login'
+				);
+			if (isLoggedIn) {
+				loginButton.classList.remove(
+					'fa-user'
+				);
+				loginButton.classList.add(
+					'fa-sign-out-alt'
+				);
+				loginButton.setAttribute(
+					'title',
+					'Logout'
+				);
+			} else {
+				loginButton.classList.remove(
+					'fa-sign-out-alt'
+				);
+				loginButton.classList.add(
+					'fa-user'
+				);
+				loginButton.setAttribute(
+					'title',
+					'Login'
+				);
+			}
+		}
+
+		window.onload = checkLoginStatus;
+	</script>
+	<script src="../assets/scripts/script.js"></script>
+	<script src="../assets/scripts/music-player.js"></script>
+</body>
+
+</html>

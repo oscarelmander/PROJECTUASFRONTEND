@@ -1,0 +1,579 @@
+/* Body Web */
+/* body {
+    background-color: black;
+    color: white;
+} */
+
+body.light-mode {
+	background-color: #ffffff;
+	color: #000000;
+}
+
+/* Night Mode Styles */
+body.dark-mode {
+	background-color: #2c2c2c;
+	color: #ffffff;
+}
+
+div[ng-include] {
+	display: contents;
+}
+
+#toogle_dark_light {
+	padding-top: 4px;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+#toogle_login {
+	padding-top: 4px;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+#music_button {
+	padding-top: 4px;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+.subs_button {
+	padding-top: 4px;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+.dropdown-toggle {
+	font-size: 20px;
+	margin-top: 2px;
+}
+
+.dropdown-menu {
+	background-color: rgba(255,
+			255,
+			255,
+			0.8);
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(8px);
+	top: 50px !important;
+	padding: 0.5rem 0;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+	background-color: rgba(0, 0, 0, 0.1);
+	color: inherit;
+}
+
+.dropdown-item {
+	border: none;
+}
+
+/* Navbar and Footer */
+
+.svg-icon {
+	filter: invert(100%);
+	margin-left: 8px;
+}
+
+/* .navbar {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+} */
+
+/* Navbar Title */
+/* .navbar-brand {
+    font-size: 2rem;
+    font-weight: bold;
+    position: absolute;
+    left: 5%;
+    transform: translateX(-50%);
+} */
+
+/* Dark tech-themed animated background */
+.animated-background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	overflow: hidden;
+}
+
+/* Default for Dark Mode */
+.dark-mode .animated-background {
+	background-color: #000;
+	/* Hitam */
+}
+
+.light-mode .animated-background {
+	background-color: #fff;
+	/* Putih */
+}
+
+.tech-shape {
+	position: absolute;
+	/* Warna putih */
+	animation: move 20s linear infinite;
+	z-index: 1;
+}
+
+/* Default for Dark Mode */
+.dark-mode .tech-shape {
+	background-color: rgba(255,
+			255,
+			255,
+			0.6);
+}
+
+/* Light Mode */
+.light-mode .tech-shape {
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Different sizes and styles for shapes */
+.tech-shape.circle {
+	width: 80px;
+	/* Ukuran lebih besar */
+	height: 80px;
+	/* Ukuran lebih besar */
+	border-radius: 50%;
+}
+
+.tech-shape.square {
+	width: 80px;
+	/* Ukuran lebih besar */
+	height: 80px;
+	/* Ukuran lebih besar */
+	border-radius: 4px;
+}
+
+/* Animation for the shapes */
+@keyframes move {
+	0% {
+		transform: translateY(100vh) rotate(0deg);
+	}
+
+	100% {
+		transform: translateY(-100vh) rotate(720deg);
+	}
+}
+
+/* Adjust each shape with unique animations */
+.tech-shape:nth-child(odd) {
+	animation-duration: 15s;
+	animation-delay: calc(2s * var(--i));
+}
+
+.tech-shape:nth-child(even) {
+	animation-duration: 25s;
+	animation-delay: calc(1.5s * var(--i));
+}
+
+/* Carousel */
+.carousel {
+	position: relative;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.carousel .carousel-slide {
+	display: flex;
+	width: calc(100% * 3);
+	height: 100%;
+	animation: slide 90s linear infinite;
+}
+
+.carousel .carousel-slide img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+@keyframes slide {
+	0% {
+		transform: translateX(0);
+	}
+
+	20% {
+		transform: translateX(-33.33%);
+	}
+}
+
+/* Section */
+.section {
+	padding: 120px 0;
+	text-align: center;
+}
+
+.section h2 {
+	font-size: 2rem;
+	font-weight: bold;
+	margin-bottom: 1.5rem;
+}
+
+.container {
+	max-width: 900px;
+}
+
+.card {
+	border: none;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+	object-fit: cover;
+	height: 200px;
+}
+
+.article-category {
+	color: #0056b3;
+	font-size: 0.9rem;
+	font-weight: bold;
+}
+
+.article-title {
+	font-size: 1.1rem;
+	font-weight: bold;
+}
+
+.article-date {
+	font-size: 0.8rem;
+	color: gray;
+}
+
+/* contact */
+#contact-section {
+	background-image: url('21-3.jpg');
+	/* Replace with your image URL */
+	background-size: cover;
+	background-position: center;
+	padding: 60px 20px;
+	color: #fff;
+}
+
+.contact-container {
+	max-width: 600px;
+	margin: auto;
+	background: rgba(0, 0, 0, 0.6);
+	padding: 20px;
+	border-radius: 8px;
+}
+
+.contact-container h2 {
+	text-align: center;
+	margin-bottom: 20px;
+	color: #ffa500;
+}
+
+.form-control,
+.btn {
+	border-radius: 4px;
+}
+
+.btn-primary {
+	background-color: #ffa500;
+	border: none;
+}
+
+.btn-primary:hover {
+	background-color: #e69500;
+}
+
+.stars {
+	font-size: 24px;
+	color: #ccc;
+	cursor: pointer;
+	transition: color 0.3s;
+}
+
+.star.active {
+	color: gold;
+}
+
+.star:hover {
+	color: #ffd700;
+}
+
+footer {
+	background-color: #121111;
+	color: #fff;
+}
+
+.footer-container {
+	width: 100%;
+}
+
+.footer-links {
+	padding-top: 30px;
+	padding-bottom: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 15px;
+}
+
+.footer-links a {
+	color: #fff;
+	text-decoration: none;
+	margin: 0 15px;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.footer-links a:hover {
+	text-decoration: underline;
+}
+
+.footer-description {
+	margin: 20px 0;
+	font-size: 14px;
+	text-align: center;
+}
+
+.footer-icons a {
+	color: #fff;
+	margin: 0 10px;
+	font-size: 10px;
+}
+
+.footer-icons a:hover {
+	color: #d4d4d4;
+}
+
+.footer-bottom {
+	background-color: black;
+	padding-top: 30px;
+	padding-bottom: 15px;
+	text-align: center;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+@media (max-width: 1100px) {
+	.footer-links {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+	}
+}
+
+@media (max-width: 576px) {
+	.footer-description {
+		font-size: 10px;
+	}
+}
+
+.modal-title {
+	color: black;
+	text-align: center;
+	width: 100%;
+	font-weight: bold;
+}
+
+.modal-body .form-label {
+	color: black;
+}
+
+.modal-body .form-control {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.modal-body .btn-primary {
+	background-color: #007bff;
+	border-color: #007bff;
+}
+
+.modal-body .btn-primary:hover {
+	background-color: #0056b3;
+	border-color: #0056b3;
+}
+
+.modal-dialog {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: calc(100vh - 1rem);
+}
+
+.dark-mode #myUL {
+	background-color: black;
+	color: white;
+}
+
+.light-mode #myUL {
+	background-color: white;
+	color: black;
+}
+
+.dark-mode #toogle_login {
+	color: white;
+}
+
+.light-mode #toogle_login {
+	color: black;
+}
+
+/* Default styling (desktop view) */
+.music-player {
+	display: flex;
+	/* Menampilkan semua elemen */
+	align-items: center;
+	background-color: rgba(60, 43, 43, 0.8);
+	/* Warna latar belakang */
+	border-radius: 12px;
+	/* Membuat sudut melengkung */
+}
+
+/* Responsif: Hanya menampilkan tombol Play pada layar kecil */
+@media (max-width: 768px) {
+	#music_player {
+		width: 70px;
+		/* Ukuran tombol Play */
+		height: 70px;
+		background-color: transparent;
+		/* Latar belakang transparan */
+		border-radius: 50%;
+		/* Bentuk lingkaran */
+		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+		/* Bayangan untuk estetika */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0;
+		/* Hilangkan padding */
+	}
+
+	.album-cover,
+	.music-info,
+	.progress,
+	#current_time,
+	#total_time {
+		display: none !important;
+		/* Sembunyikan elemen lainnya */
+	}
+
+	.play-button {
+		width: 50px;
+		/* Ukuran tombol */
+		height: 50px;
+		background-color: orange;
+		/* Warna tombol Play */
+		border: none;
+		/* Hilangkan border */
+		border-radius: 50%;
+		/* Bentuk lingkaran */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		/* Ubah kursor menjadi pointer */
+		box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+		/* Sedikit bayangan */
+	}
+
+	.play-button i {
+		font-size: 20px;
+		/* Ukuran ikon Play */
+		color: white;
+		/* Warna ikon */
+	}
+}
+
+/* mengubah warna container dan tulisan (lihat selengkapnya)  artikel di halaman rekomendasi fashion*/
+.bg-gray-200 {
+	background-color: #e0e0e0;
+	/* Abu-abu terang */
+}
+
+.btn-outline-dark {
+	color: #000;
+	/* Hitam untuk teks */
+	border-color: #000;
+	/* Hitam untuk border */
+}
+
+.btn-outline-dark:hover {
+	background-color: #f0f0f0;
+	/* Warna abu-abu yang lebih terang saat hover */
+	color: #000;
+	/* Tetap hitam */
+}
+
+/*kolom komen untuk artikel utama padz 1-9*/
+.comments-section {
+	background-color: #212529;
+	padding: 20px;
+	border-radius: 8px;
+}
+
+.comments-section h3 {
+	margin-bottom: 20px;
+}
+
+.card {
+	background-color: #2d3238;
+	border: none;
+	color: white;
+}
+
+.card .card-title {
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.card .card-text {
+	font-size: 0.95rem;
+}
+
+/* filter search bar */
+.search-container {
+	max-width: 250px;
+	/* Kurangi lebar input */
+	margin-right: 15px;
+	/* Jarak dengan elemen lain */
+	display: inline-block;
+}
+
+#myInput {
+	border-radius: 50px;
+	padding: 5px 15px;
+	/* Kurangi padding */
+	font-size: 14px;
+	/* Perkecil ukuran font */
+	height: 30px;
+	/* Sesuaikan tinggi input */
+	background-color: white;
+	/* Pastikan warna background putih */
+	border: none;
+	/* Hilangkan border */
+	box-shadow: 0 0 0 1px #ddd;
+	/* Tambahkan bayangan tipis untuk efek border */
+	outline: none;
+	/* Hilangkan outline saat fokus */
+}
+
+.input-group-text {
+	background-color: white;
+	/* Pastikan latar belakang putih */
+	border: none;
+	font-size: 14px;
+	/* Sesuaikan ukuran ikon */
+	padding: 0 8px;
+}
+
+.input-group {
+	border: none;
+	/* Hilangkan border luar */
+	border-radius: 50px;
+	overflow: hidden;
+	background-color: white;
+	/* Pastikan latar belakang penuh putih */
+	box-shadow: 0 0 0 1px #ddd;
+	/* Tambahkan border dengan efek bayangan */
+}

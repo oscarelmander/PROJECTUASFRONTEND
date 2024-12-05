@@ -1,0 +1,471 @@
+* {
+    /* margin: 0;
+    padding: 0; */
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --bg-color: #000000;
+    --second-bg-color: #ffffff;
+    --text-color: #ffffff;
+    --main-color: #254bf6;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+#article_text {
+    font-size: 20px !important;
+}
+
+.dark-mode #article_text {
+    color: white;
+}
+
+.light-mode #article_text {
+    color: black;
+}
+
+body {
+    /* background-color: var(--bg-color);
+   color: var(--text-color); */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+body.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Night Mode Styles */
+body.dark-mode {
+    background-color: #2c2c2c;
+    color: #ffffff;
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 12% 10rem;
+}
+
+#toogle_dark_light {
+    padding-top: 4px !important;
+    cursor: pointer !important;
+    font-size: 20px !important;
+}
+
+#toogle_login {
+    padding-top: 4px !important;
+    cursor: pointer !important;
+    font-size: 20px !important;
+}
+
+#music_button {
+    padding-top: 4px !important;
+    cursor: pointer !important;
+    font-size: 20px !important;
+}
+
+.dropdown-toggle {
+    font-size: 20px !important;
+    margin-top: 4px !important;
+}
+
+.dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    /* Latar belakang putih semi transparan */
+    border-radius: 8px !important;
+    /* Sudut melengkung */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    /* Efek shadow agar dropdown terlihat lebih terangkat */
+    backdrop-filter: blur(8px) !important;
+    /* Efek blur pada background */
+    top: 50px !important;
+    /* Menggeser dropdown sedikit ke bawah */
+    padding: 0.5rem 0 !important;
+}
+
+/* Menghapus hover dan active effect */
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    /* Menambahkan sedikit efek warna saat hover */
+    color: inherit !important;
+    /* Warna teks tetap sama */
+}
+
+/* Menghilangkan border pada item dropdown */
+.dropdown-item {
+    border: none !important;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 12%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    /* Centers logo and menu vertically */
+    justify-content: space-between;
+    /* Keeps logo and menu icon separated */
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    height: 8rem;
+}
+
+/* Center the logo */
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.logo:hover {
+    transform: translateX(-50%) scale(1.1);
+    /* Keep the centering on hover */
+}
+
+.logo span {
+    text-shadow: 0 0 25px var(--main-color);
+}
+
+/* Hamburger Menu Icon */
+.menu-icon {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 3rem;
+    height: 2rem;
+    align-self: center;
+    position: absolute;
+    right: 2rem;
+    /* Moves to the far right */
+    top: 50%;
+    /* Center vertically */
+    transform: translateY(-50%);
+}
+
+.article-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #000000;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .article-container {
+    background-color: #000;
+    /* Hitam */
+}
+
+.light-mode .article-container {
+    background-color: #ededed;
+    /* Putih */
+}
+
+.heading-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.dark-mode .heading-title {
+    color: white;
+}
+
+.light-mode .heading-title {
+    color: black;
+}
+
+.dark-mode .sidebar-heading-title {
+    color: white;
+}
+
+.light-mode .sidebar-heading-title {
+    color: black;
+}
+
+.subheading {
+    font-size: 1.8rem;
+    font-style: italic;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.date {
+    font-size: 1.4rem;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.article-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.content p {
+    margin-bottom: 20px;
+    text-align: justify;
+    font-size: 1.8rem;
+    /* Tambahkan ukuran font disini */
+    line-height: 1.8;
+    /* Tambahkan line-height untuk spasi antar baris */
+}
+
+.product-links {
+    margin-top: 20px;
+}
+
+.product-links p {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    /* buat jarah antara text produk yang di pakai dan link */
+}
+
+.product-links ul {
+    list-style-type: none;
+}
+
+.product-links ul li {
+    margin-bottom: 10px;
+}
+
+.product-links ul li a {
+    font-size: 1.6rem;
+    color: var(--main-color) !important;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.product-links ul li a:hover {
+    color: #ff6347;
+}
+
+.back-button {
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    background-color: #4caf4f00;
+    /* Warna hijau */
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.back-button:hover {
+    background-color: #45a04900;
+    /* Warna hijau yang lebih gelap saat hover */
+}
+
+.dark-mode .back-button {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+.light-mode .back-button {
+    color: black;
+}
+
+@media screen and (max-width: 600px) {
+    #article_text {
+        font-size: 15px !important;
+    }
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 10px;
+}
+
+.article-container {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Sidebar */
+.sidebar {
+    padding: 20px;
+    height: 100%;
+}
+
+.dark-mode .sidebar {
+    background-color: black;
+    color: white;
+}
+
+.light-mode .sidebar {
+    background-color: #ededed;
+    color: black;
+}
+
+.sidebar-article-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.sidebar h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.sidebar .other-articles {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .other-articles li {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.sidebar .other-articles li a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.sidebar .other-articles li a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        margin-top: 20px;
+    }
+}
+
+.other-articles {
+    list-style: none;
+    padding: 0;
+}
+
+.article-card {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.article-card img {
+    width: 80px;
+    height: auto;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 5px 0 0 5px;
+    margin-left: 10px;
+}
+
+.article-content {
+    padding: 10px;
+    flex: 1;
+}
+
+.article-content h4 {
+    font-size: 16px;
+    color: #fff;
+    margin: 0 0 5px;
+}
+
+.article-content p {
+    font-size: 14px;
+    color: #ddd;
+    margin: 0;
+}
+
+@media screen and (max-width: 1500px) {
+    .article-card {
+        display: block;
+    }
+
+    .article-card img {
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .article-card {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 8px;
+    }
+
+    .article-card img {
+        width: 60px;
+        height: 60px;
+        margin-right: 8px;
+        border-radius: 5px;
+    }
+
+    .article-content {
+        padding: 5px 0;
+    }
+
+    .article-content h4 {
+        font-size: 14px;
+        margin-bottom: 3px;
+    }
+
+    .article-content p {
+        font-size: 12px;
+        color: #ccc;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .article-card {
+        padding: 5px;
+    }
+
+    .article-card img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .article-content h4 {
+        font-size: 12px;
+    }
+
+    .article-content p {
+        font-size: 10px;
+    }
+}

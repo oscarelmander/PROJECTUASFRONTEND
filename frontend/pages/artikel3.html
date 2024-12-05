@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Artikel 3</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+	<link href="../assets/css/styles.css" rel="stylesheet" />
+	<link href="../assets/css/style2.css" rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="mainController" ng-class="{'light-mode': isLightMode, 'dark-mode': !isLightMode}">
+	<div class="modal fade" id="loginModal" ng-class="{'show d-block': isModalVisible, 'fade': isModalVisible}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="loginModalLabel">
+						Login
+					</h5>
+					<button type="button" class="btn-close" ng-click="isModalVisible = false"></button>
+				</div>
+				<div class="modal-body">
+					<form ng-submit="login()">
+						<div class="mb-3">
+							<label for="username" class="form-label">Username</label>
+							<input type="text" class="form-control" id="username" ng-model="user.username" required />
+						</div>
+						<div class="mb-3">
+							<label for="password" class="form-label">Password</label>
+							<input type="password" class="form-control" id="password" ng-model="user.password"
+								required />
+						</div>
+						<button type="submit" class="btn btn-primary w-100">
+							Login
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div ng-include="'navbar.html'"></div>
+
+	<div class="main-container">
+		<div class="article-container text-white">
+			<h1 class="heading-title">
+				Berikut Setelan Formal Wilbert
+				Yang sangat Cocok Di Pakai
+				Untuk Gen Z
+			</h1>
+			<p class="subheading">
+				Fashion Style Wilbert
+			</p>
+			<p class="date">
+				3 oktober 2024
+			</p>
+
+			<!-- Gambar Artikel -->
+			<img src="../image/outfit3.jpg" alt="Fashion Style Image" class="article-image" />
+
+			<!-- Konten Paragraf -->
+			<div class="content">
+				<p id="article_text">
+					Pada foto ini, seseorang
+					terlihat mengenakan outfit
+					yang kasual namun tetap rapi
+					dan terkesan elegan. Ia
+					memakai trench coat berwarna
+					beige yang klasik,
+					memberikan kesan formal
+					namun tetap santai. Di
+					bawahnya, ia mengenakan
+					kemeja atau kaus berkerah
+					cokelat muda yang dipadukan
+					dengan celana panjang chino
+					berwarna senada, yaitu krem
+					atau beige. Kombinasi warna
+					yang netral ini memberikan
+					tampilan yang seimbang dan
+					harmonis.
+				</p>
+				<p id="article_text">
+					Untuk alas kaki, ia memilih
+					sneakers putih yang
+					menambahkan sentuhan kasual
+					pada keseluruhan penampilan,
+					membuatnya lebih santai dan
+					modern. Jam tangan yang
+					dipakai juga menambah kesan
+					rapi dan profesional. Secara
+					keseluruhan, gaya ini cocok
+					untuk suasana semi-formal
+					atau acara-acara yang tidak
+					terlalu resmi, namun tetap
+					ingin tampil stylish dan
+					berkelas.
+				</p>
+			</div>
+
+			<!-- Link Produk -->
+			<div class="product-links">
+				<p>
+					<strong id="article_text">Produk yang
+						digunakan:</strong>
+				</p>
+				<ul>
+					<li>
+						<a id="article_text"
+							href="https://www.google.com/imgres?imgurl=https%3A%2F%2Fmedia.karousell.com%2Fmedia%2Fphotos%2Fproducts%2F2021%2F1%2F11%2Fouter_pull__bear_original_1610355606_b0565546.jpg&tbnid=PQ-r2PkKPQRT2M&vet=1&imgrefurl=https%3A%2F%2Fid.carousell.com%2Fp%2Fouter-pull-bear-original-1062035644%2F&docid=B3cEyI_BpRUoaM&w=810&h=1080&hl=in-ID&source=sh%2Fx%2Fim%2Fm1%2F4&kgs=6257fb08d15aa6a9&shem=abme%2Ctrie"
+							target="_blank">Baju - Outer Casual</a>
+					</li>
+					<li>
+						<a id="article_text" href="https://id.shp.ee/ZVdQpoi" target="_blank">Celana - Celana Casual
+							Pria</a>
+					</li>
+					<li>
+						<a id="article_text"
+							href="https://shopee.co.id/Sepatu-Pria-H-M-Original-Store-i.266351779.23922918322"
+							target="_blank">Sepatu - Sepatu Casual
+							Pria</a>
+					</li>
+				</ul>
+			</div>
+
+			<!-- Kolom Komentar -->
+			<div class="comments-section mt-5">
+				<h3 class="text-white">Kolom Komentar</h3>
+				<div class="add-comment mb-4">
+					<textarea class="form-control" ng-model="newComment.text" rows="3"
+						placeholder="Tulis komentar Anda di sini..." required></textarea>
+					<button class="btn btn-primary mt-2 w-100" ng-click="addComment()">Kirim Komentar</button>
+				</div>
+				<div class="comments-list">
+					<div class="card mb-3" ng-repeat="comment in comments track by $index">
+						<div class="card-body">
+							<h5 class="card-title">User {{ $index + 1 }}</h5>
+							<p class="card-text">{{ comment.text }}</p>
+							<p class="text-muted small">Ditulis pada {{ comment.timestamp | date:'medium' }}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div ng-include="'../pages/sidebar.html'"></div>
+	</div>
+
+	<div ng-include="'../pages/footer.html'"></div>
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- font icon ig,wa,gmail -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+	<!-- AngularJS Controller -->
+	<script src="../assets/scripts/script.js"></script>
+	<script>
+		function checkLoginStatus() {
+			const isLoggedIn =
+				localStorage.getItem(
+					'isLoggedIn'
+				) === 'true';
+
+			const loginButton =
+				document.getElementById(
+					'toogle_login'
+				);
+			if (isLoggedIn) {
+				loginButton.classList.remove(
+					'fa-user'
+				);
+				loginButton.classList.add(
+					'fa-sign-out-alt'
+				);
+				loginButton.setAttribute(
+					'title',
+					'Logout'
+				);
+			} else {
+				loginButton.classList.remove(
+					'fa-sign-out-alt'
+				);
+				loginButton.classList.add(
+					'fa-user'
+				);
+				loginButton.setAttribute(
+					'title',
+					'Login'
+				);
+			}
+		}
+
+		window.onload = checkLoginStatus;
+	</script>
+</body>
+
+</html>

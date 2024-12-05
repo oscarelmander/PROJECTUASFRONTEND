@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Artikel 1</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+	<link href="../assets/css/styles.css" rel="stylesheet" />
+	<link href="../assets/css/style2.css" rel="stylesheet" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="mainController" ng-class="{'light-mode': isLightMode, 'dark-mode': !isLightMode}">
+	<div class="modal fade" id="loginModal" ng-class="{'show d-block': isModalVisible, 'fade': isModalVisible}">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="loginModalLabel">
+						Login
+					</h5>
+					<button type="button" class="btn-close" ng-click="isModalVisible = false"></button>
+				</div>
+				<div class="modal-body">
+					<form ng-submit="login()">
+						<div class="mb-3">
+							<label for="username" class="form-label">Username</label>
+							<input type="text" class="form-control" id="username" ng-model="user.username" required />
+						</div>
+						<div class="mb-3">
+							<label for="password" class="form-label">Password</label>
+							<input type="password" class="form-control" id="password" ng-model="user.password"
+								required />
+						</div>
+						<button type="submit" class="btn btn-primary w-100">
+							Login
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div ng-include="'navbar.html'"></div>
+
+	<div class="main-container">
+		<div class="article-container text-white">
+			<h1 class="heading-title">
+				Berikut fashion Style Yang
+				Dikenakan Dziko, Mahasiswa
+				Dari Untar
+			</h1>
+			<p class="subheading">
+				Fashion Style Dziko
+			</p>
+			<p class="date">
+				30 September 2024
+			</p>
+
+			<!-- Gambar Artikel -->
+			<img src="../image/outfit1.JPG" alt="Fashion Style Image" class="article-image" />
+
+			<!-- Konten Paragraf -->
+			<div class="content">
+				<p id="article_text">
+					Outfit ini memberikan kesan
+					kasual namun tetap stylish
+					dengan paduan elemen
+					streetwear yang kuat. Kaos
+					hitam bergambar pemain
+					basket Steph Curry dengan
+					detail "USA" menonjolkan
+					nuansa sporty dan hype,
+					ideal bagi pecinta olahraga,
+					terutama basket. Dipasangkan
+					dengan celana jogger abu-abu
+					yang memberikan kenyamanan
+					dan kebebasan bergerak,
+					tampilan ini semakin santai
+					namun tetap trendi. Sepatu
+					Nike putih melengkapi
+					keseluruhan look, memberikan
+					kesan minimalis namun tetap
+					elegan. Ini adalah perpaduan
+					sempurna antara fashion
+					olahraga dan casual
+					streetwear yang effortless.
+				</p>
+			</div>
+
+			<!-- Link Produk -->
+			<div class="product-links">
+				<p>
+					<strong id="article_text">Produk yang
+						digunakan:</strong>
+				</p>
+				<ul>
+					<li>
+						<a id="article_text" href="https://id.shp.ee/MCutsxw" target="_blank">Baju - Steph Curry
+							"USA" EMCN T-shirt</a>
+					</li>
+					<li>
+						<a id="article_text" href="https://id.shp.ee/6UxYNgu" target="_blank">Celana - Jogger
+							Abu-Abu</a>
+					</li>
+					<li>
+						<a id="article_text"
+							href="https://www.footlocker.id/nike-air-force-1-07-men-s-sneakers-white-31.html?color=7"
+							target="_blank">Sepatu - Nike Air Force
+							1 Putih</a>
+					</li>
+				</ul>
+			</div>
+
+			<!-- Kolom Komentar -->
+			<div class="comments-section mt-5">
+				<h3 class="text-white">Kolom Komentar</h3>
+				<div class="add-comment mb-4">
+					<textarea class="form-control" ng-model="newComment.text" rows="3"
+						placeholder="Tulis komentar Anda di sini..." required></textarea>
+					<button class="btn btn-primary mt-2 w-100" ng-click="addComment()">Kirim Komentar</button>
+				</div>
+				<div class="comments-list">
+					<div class="card mb-3" ng-repeat="comment in comments track by $index">
+						<div class="card-body">
+							<h5 class="card-title">User {{ $index + 1 }}</h5>
+							<p class="card-text">{{ comment.text }}</p>
+							<p class="text-muted small">Ditulis pada {{ comment.timestamp | date:'medium' }}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div ng-include="'../pages/sidebar.html'"></div>
+	</div>
+
+	<div ng-include="'../pages/footer.html'"></div>
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- font icon ig,wa,gmail -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+	<!-- AngularJS Controller -->
+	<script src="../assets/scripts/script.js"></script>
+	<script>
+		function checkLoginStatus() {
+			const isLoggedIn =
+				localStorage.getItem(
+					'isLoggedIn'
+				) === 'true';
+
+			const loginButton =
+				document.getElementById(
+					'toogle_login'
+				);
+			if (isLoggedIn) {
+				loginButton.classList.remove(
+					'fa-user'
+				);
+				loginButton.classList.add(
+					'fa-sign-out-alt'
+				);
+				loginButton.setAttribute(
+					'title',
+					'Logout'
+				);
+			} else {
+				loginButton.classList.remove(
+					'fa-sign-out-alt'
+				);
+				loginButton.classList.add(
+					'fa-user'
+				);
+				loginButton.setAttribute(
+					'title',
+					'Login'
+				);
+			}
+		}
+
+		window.onload = checkLoginStatus;
+	</script>
+</body>
+
+</html>
