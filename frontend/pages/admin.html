@@ -1,37 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="PADZApp">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Pengguna PADZ</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body ng-app="PADZApp" ng-controller="adminController" ng-init="debug = users">
-
-    <div class="container my-4">
-        <h1>Daftar Pengguna PADZ</h1>
-        <table class="table table-striped mt-4">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="user in users track by $index">
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>
-                        <button class="btn btn-danger" ng-click="deleteUser(user._id)">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 
-<script src="/assets/scripts/adminController.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* Left Section with Full Image */
+        .left {
+            flex: 1;
+            background-color: #000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Right Section for User List */
+        .right {
+            flex: 1;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            height: 100vh;
+        }
+
+        .right h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .table {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 30px;
+        }
+
+        .table th,
+        .table td {
+            text-align: center;
+        }
+
+        .table-striped tbody tr:nth-child(odd) {
+            background-color: #f5f5f5;
+        }
+
+        .btn-danger {
+            background-color: #000000;
+            border-color: #000000;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            background-color: #333333;
+            border-color: #333333;
+        }
+
+        .card-header {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .modal-header {
+            background-color: #000000;
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left {
+                height: 200px;
+                flex: none;
+            }
+
+            .right {
+                height: auto;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body ng-controller="adminController" ng-init="debug = users">
+
+    <div class="container">
+        <!-- Left Section for Image -->
+        <div class="left">
+            <img src="../image/21-3.jpg" alt="img">
+        </div>
+
+        <!-- Right Section for User List -->
+        <div class="right">
+            <h2>Daftar Pengguna</h2>
+            <div class="card">
+                <div class="card-header">
+                    <h4>User Information</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="user in users track by $index">
+                                <td>{{ user.name }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>
+                                    <button class="btn btn-danger" ng-click="deleteUser(user._id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- AngularJS Controller -->
+    <script src="/assets/scripts/adminController.js"></script>
+
 </body>
+
 </html>

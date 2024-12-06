@@ -106,8 +106,8 @@
 	<div ng-include="'/pages/navbar.html'"></div>
 
 	<!-- Music Player di Body -->
-	<div class="music-player position-fixed bottom-0 end-0 m-3 bg-transparent text-light p-3 rounded shadow d-flex align-items-center"
-		id="music_player">
+	<div class="music-player position-fixed bottom-0 end-0 m-3 bg-transparent p-3 rounded shadow d-flex align-items-center"
+		ng-class="{'text-dark': isLightMode, 'text-light': !isLightMode}">
 		<!-- Album Cover -->
 		<img src="../image/21-3.jpg" alt="Album Cover" class="rounded-circle me-3 album-cover"
 			style="width: 50px; height: 50px; object-fit: cover;">
@@ -115,10 +115,14 @@
 		<!-- Music Info -->
 		<div class="d-flex flex-column flex-grow-1 music-info">
 			<p class="mb-0" style="font-weight: bold; font-size: 16px;" id="music_title">Padz Song</p>
-			<small class="text-white" id="music_artist">Oscar ft Dziko</small>
+			<small ng-class="{'text-dark': isLightMode, 'text-white': !isLightMode}" id="music_artist">Oscar ft
+				Dziko</small>
+
 
 			<!-- Dropdown Music Selector -->
-			<select class="form-select mt-2 text-light bg-transparent border-light" id="music_selector">
+			<select class="form-select mt-2 bg-transparent"
+				ng-class="{'text-dark border-dark': isLightMode, 'text-light border-light': !isLightMode}"
+				id="music_selector">
 				<option value="../violent.mp3" data-title="violent crimes x jersey club" data-artist="prodbycpkshawn"
 					data-cover="../image/21-3.jpg">Violent</option>
 				<option value="../caroline.mp3" data-title="Caroline" data-artist="Amine"
@@ -1282,15 +1286,15 @@
 			var articles = document.querySelectorAll('#article-container');
 
 			if (filter === "") {
-				articles.forEach(function(article) {
+				articles.forEach(function (article) {
 					article.style.display = 'none';
 				});
 			}
-			else{
-				articles.forEach(function(article) {
+			else {
+				articles.forEach(function (article) {
 					var title = article.querySelector('.article-title');
 					if (title && title.innerText.toUpperCase().indexOf(filter) > -1) {
-						article.style.display = ''; 
+						article.style.display = '';
 					} else {
 						article.style.display = 'none';
 					}
